@@ -1,0 +1,10 @@
+This project intends to use grails framework and gradle build for backend
+reactjs and npm build for frontend.
+
+to build front end:
+cd .\noodles\grails-app\assets\javascripts\dependencies
+npm3 run build
+
+to import from npm
+cd .\noodles\grails-app\assets\javascripts\dependencies
+npm3 install <package>

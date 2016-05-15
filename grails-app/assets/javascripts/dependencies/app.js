@@ -1,38 +1,41 @@
-var $ = require('jquery');
-console.log($('#content').val());
-var button = $('<button/>').html('click me').on('click', function(){
-  alert('hi');
-});
-$('body').append(button);
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-// var React = require('react');
-// var ReactDOM = require('react-dom');
-// var getMuiTheme = require('material-ui/styles/getMuiTheme');
-// var MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
-// var RaisedButton = require('material-ui/RaisedButton');
+import {getMuiTheme, MuiThemeProvider} from 'material-ui/styles';
+import {AppBar, IconButton, IconMenu, MenuItem, Divider} from 'material-ui';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import MenuItemDialog from "./dialogs/form_dialog"
+import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import SocialPerson from 'material-ui/svg-icons/social/person';
 
-// const MyAwesomeReactComponent = () => (
-//   <RaisedButton label="Default" />
-// );
 
-// const App = () => (
-//   <MuiThemeProvider muiTheme={getMuiTheme()}>
-//     <MyAwesomeReactComponent />
-//   </MuiThemeProvider>
-// );
+var NormalAppBar = React.createClass({
+	render: function() {
+		return  (  <AppBar
+    title="Noodles"
+    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+    iconElementRight={
+      <IconMenu
+        iconButtonElement={
+          <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+      <MenuItemDialog primaryText="Sign Up" dialogContent="Sign Up Content" leftIcon={<PersonAdd/>} dialogTitle="Sign Up"/>
+      <MenuItemDialog primaryText="Login" dialogContent="Login Content" leftIcon={<SocialPerson/>} dialogTitle="Login"/>
+        <Divider />
+        <MenuItem primaryText="Help" />
+      </IconMenu>
+    }/>);
+}
+});
 
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('content')
-// );
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 ReactDOM.render(
 	<MuiThemeProvider muiTheme={getMuiTheme()}>
-	<RaisedButton label="Default" />
+        <NormalAppBar/>
 	</MuiThemeProvider>
 	, 
 	document.getElementById('content'));

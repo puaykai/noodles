@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/noodles/assets/foundation.min.css">
   </head>
   <body>
-    <div id="content">value</div>
+    <div id="content"></div>
     <script src="/noodles/assets/dependencies/bundle.js" charset="utf-8"></script>
   </body>
 </html>

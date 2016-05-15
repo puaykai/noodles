@@ -8,3 +8,10 @@ npm3 run build
 to import from npm
 cd .\noodles\grails-app\assets\javascripts\dependencies
 npm3 install <package>
+
+to run the application on local
+cd .\noodles\grails-app\assets\javascripts\dependencies
+npm3 run build
+cd .\noodles
+grails run-app
+browse to localhost:8080/noodles

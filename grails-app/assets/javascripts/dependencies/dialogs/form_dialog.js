@@ -38,6 +38,7 @@ var MenuItemDialog = React.createClass({
     return (<div><MenuItem primaryText={this.props.primaryText} onTouchTap={this.handleOpen} leftIcon={this.props.leftIcon}/>
               <Dialog
           title={this.props.dialogTitle}
+          modal={true}
           actions={[
       <FlatButton
         label="Cancel"
@@ -58,21 +59,6 @@ var MenuItemDialog = React.createClass({
   }
 });
 
-var MenuItemFormDialog = React.createClass({
-  render: function(){
-    return (
-        <MenuItem 
-        primaryText={this.props.primaryText}
-        leftIcon={this.props.leftIcon}
-        dialogTitle={this.props.dialogTitle}
-        dialogContent={
-          <form action={this.props.formAction}>
-            {this.props.formContent} //submit button must link to the one in menu, afer submit the buttons should change to loading, include a function to be run after server reply
-          </form>
-        }/>
-      );
-  }
-});
 
 
 export default RaisedDialogButton;

@@ -57,8 +57,14 @@ var NormalAppBar = _react2.default.createClass({
           targetOrigin: { horizontal: 'right', vertical: 'top' },
           anchorOrigin: { horizontal: 'right', vertical: 'top' }
         },
-        _react2.default.createElement(_form_dialog2.default, { primaryText: 'Sign Up', dialogContent: 'Sign Up Content', leftIcon: _react2.default.createElement(_personAdd2.default, null), dialogTitle: 'Sign Up' }),
-        _react2.default.createElement(_form_dialog2.default, { primaryText: 'Login', dialogContent: 'Login Content', leftIcon: _react2.default.createElement(_person2.default, null), dialogTitle: 'Login' }),
+        _react2.default.createElement(_form_dialog2.default, { primaryText: 'Sign Up', dialogContent: 'Sign Up', leftIcon: _react2.default.createElement(_personAdd2.default, null), dialogTitle: 'Sign Up' }),
+        _react2.default.createElement(_form_dialog2.default, { primaryText: 'Login', dialogContent: _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_materialUi.TextField, { hintText: 'Enter your username', floatingLabelText: 'Username' }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(_materialUi.TextField, { hintText: 'Enter your password', floatingLabelText: 'Password' })
+          ), leftIcon: _react2.default.createElement(_person2.default, null), dialogTitle: 'Login' }),
         _react2.default.createElement(_materialUi.Divider, null),
         _react2.default.createElement(_materialUi.MenuItem, { primaryText: 'Help' })
       ) });
@@ -89,6 +95,8 @@ var _styles = require('material-ui/styles');
 var _materialUi = require('material-ui');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var RaisedDialogButton = _react2.default.createClass({
   displayName: 'RaisedDialogButton',
@@ -142,14 +150,17 @@ var MenuItemDialog = _react2.default.createClass({
     this.setState({ open: true });
   },
   render: function render() {
+    var _React$createElement;
+
     return _react2.default.createElement(
       'div',
       null,
       _react2.default.createElement(_materialUi.MenuItem, { primaryText: this.props.primaryText, onTouchTap: this.handleOpen, leftIcon: this.props.leftIcon }),
       _react2.default.createElement(
         _materialUi.Dialog,
-        {
+        (_React$createElement = {
           title: this.props.dialogTitle,
+          modal: true,
           actions: [_react2.default.createElement(_materialUi.FlatButton, {
             label: 'Cancel',
             primary: true,
@@ -157,11 +168,8 @@ var MenuItemDialog = _react2.default.createClass({
             label: 'Submit',
             primary: true,
             keyboardFocused: true,
-            onTouchTap: this.handleClose })],
-          modal: false,
-          open: this.state.open,
-          onRequestClose: this.handleClose
-        },
+            onTouchTap: this.handleClose })]
+        }, _defineProperty(_React$createElement, 'modal', false), _defineProperty(_React$createElement, 'open', this.state.open), _defineProperty(_React$createElement, 'onRequestClose', this.handleClose), _React$createElement),
         this.props.dialogContent
       )
     );
